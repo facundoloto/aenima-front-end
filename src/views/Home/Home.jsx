@@ -136,7 +136,7 @@ export function Home() {
                       </svg>
                     </Button>
                   </ButtonGroup> 
-                  <Card.Img variant="top" src={"https://github.com/facundoloto/challenge-aenima-back-end/tree/main/public"+`${data.imagen}`} />
+                  <Card.Img variant="top" src={"https://raw.githubusercontent.com/facundoloto/challenge-aenima-back-end/main/public"+`${data.imagen}`} />
                   <Card.Body className="info ">
                     <ListGroup>
                       <Card.Title className="text-dark">{`${data.name}`}</Card.Title>

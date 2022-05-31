@@ -52,7 +52,7 @@ export default function CatalogoForm() {
           body: formData,
         };
         response = await fetch(
-          `http://localhost:3001/products/add/`,
+          `https://aenima-back.onrender.com/products/add/`,
           requestOptions
         );
 
