@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Card, ListGroup, Nav, NavDropdown, Navbar, Container, Button, ButtonGroup } from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Home.css";
@@ -101,17 +101,18 @@ export function Home() {
               >
                 <ButtonGroup vertical className="">
                   <Button
+                  className="bg-filter"
                     name="lowPrice"
                     id="lowPrice"
                     value="lowPrice"
                     onClick={() => lowPrice()}
                   >Precio Menor</Button>
-                  <Button onClick={() => highPrice()}>Precio Mayor</Button>
-                  <Button onClick={() => name()}>Nombre</Button>
+                  <Button className="bg-filter" onClick={() => highPrice()}>Precio Mayor</Button>
+                  <Button className="bg-filter" onClick={() => name()}>Nombre</Button>
                 </ButtonGroup>
                 <NavDropdown.Divider />
               </NavDropdown>
-              <Nav.Link href="/agregar">Agregar Productos</Nav.Link>
+              <Link to={"/agregar/"}>agregar</Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

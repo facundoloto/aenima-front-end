@@ -65,6 +65,12 @@
     border: none;
     width:25%;
   }
+  .bg-filter {
+    background-color: #ffffff;
+    color:  black;
+    border: none;
+    width:25%;
+  }
 .bg-violet {
   background-color: #aaa6d6 !important;
   z-index: 9999;
