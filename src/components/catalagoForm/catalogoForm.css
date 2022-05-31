@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'futura';
+    src: url('../../font/futura.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+.display {
+    display: block;
+}
+
+.displayOff {
+    display: none;
+}
+
+.center-form form {
+    position: absolute;
+    margin-left: 25%;
+    margin-right: 25%;
+    top: 10%;
+    left: 0%;
+    width: 50%;
+    font-size: 1.5em;
+    background-color: white;
+    border-radius: 5%;
+    padding: 5%;
+}
+
+.center-form form label {
+    font-family: futura;
+}
+
+.center-form form button {
+    width: 25%;
+    background-color: #ff8c00;
+    border: none;
+}
+
+form img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+@media screen and (min-width: 359px) and (max-width:700px) {
+    .center-form {
+        position: absolute;
+        left: -25vw;
+        width: 100%;
+        height: 70%;
+
+    }
+
+    .center-form form {
+        position: none;
+        width: 100%;
+        font-size: 1.5em;
+    }
+
+    .center-form form button {
+        width: 100%;
+    }
+}
