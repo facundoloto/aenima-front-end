@@ -72,18 +72,18 @@ setLoader("block");
  setLoader("disabled");
       if (response.status != 200) {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "try again!",
-        });
-      } else {
-        Swal.fire({
           icon: "success",
           title: "record save",
           showConfirmButton: false,
           timer: 1500,
         });
         document.getElementById("create-course-form").reset(); //clean form
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "try again!",
+        }); 
       }
     } catch (err) {
       console.log(err);
