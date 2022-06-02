@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Button, Form, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import Loader from "../../components/loader/loader";
+import Loader from "../loader/Loader";
 import Swal from "sweetalert2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./catalogoForm.css";

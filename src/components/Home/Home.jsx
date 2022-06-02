@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import { Card, ListGroup, Nav, NavDropdown, Navbar, Container, Button, ButtonGroup } from "react-bootstrap";
 import Swal from "sweetalert2";
-import Loader from '../../components/loader/loader';
+import Loader from '../loader/Loader';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Home.css";
 

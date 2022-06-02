@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Button, Card, ListGroup } from "react-bootstrap";
-import Loader from "../../components/loader/loader";
+import Loader from "../loader/Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Products.css";
 
