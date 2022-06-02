@@ -40,7 +40,8 @@ export default function CatalogoForm() {
   const onSubmit = async function GetFecth(data) {
     let requestOptions;
     let response;
-setLoader("block");
+    setLoader("block");
+    
     try {
       let formData = new FormData();
       formData.append("name", data.name);
@@ -69,8 +70,11 @@ setLoader("block");
           requestOptions
         );
       }
+
  setLoader("disabled");
-      if (response.status != 200) {
+
+ const respuesta=await response.json();
+      if (respuesta.status != 200) {
         Swal.fire({
           icon: "success",
           title: "record save",
