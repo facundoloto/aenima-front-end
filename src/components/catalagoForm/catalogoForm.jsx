@@ -1,23 +1,31 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Button, Form, Navbar, Container } from "react-bootstrap";
+import { Button, Form, } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import Swal from 'sweetalert2';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './catalogoForm.css';
+import Loader from "../Loader/Loader";
+import Swal from "sweetalert2";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./catalogoForm.css";
 
 export default function CatalogoForm() {
-  //it's a state to save the data of form in a json for send to apirest
+
   const { register, handleSubmit } = useForm();
   const [Products, setProducts] = useState([]);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
+  const [loader, setLoader] = useState("disabled");
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
   const FetchApi = async function FetchApi() {
     if (localStorage.getItem("id") !== null) {
+      setLoader("block");
       try {
-        const response = await fetch(`https://aenima-back.onrender.com/products/${localStorage.getItem("id")}`);
+        const response = await fetch(
+          `https://aenima-back.onrender.com/products/${localStorage.getItem(
+            "id"
+          )}`
+        );
+        setLoader("disabled");
         const data = await response.json();
         setProducts(data.result);
         setName(data.result.name);
@@ -26,17 +34,13 @@ export default function CatalogoForm() {
       } catch (err) {
         alert(err);
       }
-    };
+    }
   };
 
-
-
-
   const onSubmit = async function GetFecth(data) {
-    //config of requestOptions to fetch
     let requestOptions;
     let response;
-
+setLoader("block");
     try {
       let formData = new FormData();
       formData.append("name", data.name);
@@ -44,9 +48,7 @@ export default function CatalogoForm() {
       formData.append("price", data.price);
       formData.append("image", data.image[0]);
 
-
       if (Products.length === 0) {
-
         requestOptions = {
           method: `POST`,
           body: formData,
@@ -55,45 +57,34 @@ export default function CatalogoForm() {
           `https://aenima-back.onrender.com/products/add/`,
           requestOptions
         );
-
-      }
-      else {
-
+      } else {
         requestOptions = {
           method: `PUT`,
           body: formData,
         };
-
         response = await fetch(
-          `https://aenima-back.onrender.com/products/edit/${localStorage.getItem("id")}/`,
+          `https://aenima-back.onrender.com/products/edit/${localStorage.getItem(
+            "id"
+          )}/`,
           requestOptions
         );
-
       }
-      //fecth
-
-      console.log(response.status);
-
+ setLoader("disabled");
       if (response.status != 200) {
-
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "try again!",
         });
-
       } else {
-
         Swal.fire({
           icon: "success",
           title: "record save",
           showConfirmButton: false,
           timer: 1500,
         });
-
         document.getElementById("create-course-form").reset(); //clean form
       }
-
     } catch (err) {
       console.log(err);
     }
@@ -105,13 +96,12 @@ export default function CatalogoForm() {
 
   return (
     <div>
-
+      <div className={loader}>
+        <Loader />
+      </div>
       <div className="div-first text-form">
         <div className="center-form">
-          <Form onSubmit={
-            handleSubmit(onSubmit)
-          } id="create-course-form">
-
+          <Form onSubmit={handleSubmit(onSubmit)} id="create-course-form">
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
@@ -120,26 +110,21 @@ export default function CatalogoForm() {
                 required
                 defaultValue={name}
                 onChange={(event) => {
-                  setName(event.target.value)
-                }
-                }
+                  setName(event.target.value);
+                }}
                 {...register("name")}
               />
-
-
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Descripcion</Form.Label>
               <Form.Control
-                as='textarea'
+                as="textarea"
                 rows={6}
                 defaultValue={description}
-                onChange={event => setDescription(event.target.value)}
-                {...register('description')}
+                onChange={(event) => setDescription(event.target.value)}
+                {...register("description")}
                 required
-
-
               />
             </Form.Group>
 
@@ -150,7 +135,7 @@ export default function CatalogoForm() {
                 placeholder="Normal text"
                 {...register("price")}
                 defaultValue={price}
-                onChange={event => setPrice(event.target.value)}
+                onChange={(event) => setPrice(event.target.value)}
                 aria-required="true"
                 required
               />
@@ -158,17 +143,21 @@ export default function CatalogoForm() {
 
             <Form.Group controlId="formFileSm" className="mb-3">
               <Form.Label>Cargar Imagen</Form.Label>
-              <Form.Control type="file" size="sm" {...register("image")} multiple required
+              <Form.Control
+                type="file"
+                size="sm"
+                {...register("image")}
+                multiple
+                required
               />
             </Form.Group>
 
             <Button variant="primary" type="submit">
               Submit
             </Button>
-
           </Form>
         </div>
       </div>
     </div>
-  );
-}
+  )
+};

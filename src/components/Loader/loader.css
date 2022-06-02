@@ -1,0 +1,19 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+.block {
+    display: block;
+}
+.none {
+    display: none;
+}
+
+.loader{
+  position:relative;
+  width: 100%;
+  height: 100%;
+  margin-left:-9vw;
+  z-index: 9999;
+}

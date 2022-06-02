@@ -4,12 +4,17 @@
     font-style: normal;
     font-weight: normal;
 }
+  .div-first {
+    background-color: #aaa6d6 ;
+    width: 100vw;
+    height: 100vh;
+  }
 
-.display {
+.block{
     display: block;
 }
 
-.displayOff {
+.disabled{
     display: none;
 }
 
@@ -21,9 +26,12 @@
     left: 0%;
     width: 50%;
     font-size: 1.5em;
-    background-color: white;
     border-radius: 5%;
     padding: 5%;
+    -webkit-box-shadow: -12px 6px 5px -3px rgba(0,0,0,0.19);
+    -moz-box-shadow: -12px 6px 5px -3px rgba(0,0,0,0.19);
+    box-shadow: -12px 6px 5px -3px rgba(0,0,0,0.19);
+    background-color: rgb(253, 253, 253);
 }
 
 .center-form form label {
