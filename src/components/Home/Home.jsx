@@ -23,7 +23,7 @@ export function Home() {
       const data = await response.json();
       console.log(data);
       setProducts(data.result);
-      setLoader(false);
+      setLoader(true);
     } catch (err) {
       alert(err);
     }
