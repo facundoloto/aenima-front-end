@@ -2,7 +2,7 @@ import React from "react";
 import { Hearts } from "react-loader-spinner";
 import "./Loader.css";
 
-export default function Loader(){
+export default function loader(){
   return(
    <div>
     <div className="loader">
